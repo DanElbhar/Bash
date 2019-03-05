@@ -10,8 +10,10 @@ cd $1
 Array=(1 1 1)
 Array2=(FAIL FAIL FAIL)
 
+> \out.txt
+
 if [ -e Makefile ]; then
-    make &>/dev/null
+    make &>> \out.txt
     if [ "$?" -eq 0 ]; then
         if [ ! -e $2 ]; then
         quit
@@ -25,13 +27,13 @@ if [ -e Makefile ]; then
         shift 2
             
         echo "checking memcheck tool..."
-        valgrind --tool=memcheck --leak-check=full --error-exitcode=3  ./$arg1 "$@" &>/dev/null
+        valgrind --tool=memcheck --leak-check=full --error-exitcode=3  ./$arg1 "$@" &>> \out.txt
         if [ "$?" -eq 0 ]; then
             Array[1]=0
             Array2[1]=PASS
         fi
         echo "checking helgrind tool..."
-        valgrind --tool=helgrind  --error-exitcode=4 ./$arg1 "$@" &>/dev/null
+        valgrind --tool=helgrind  --error-exitcode=4 ./$arg1 "$@" &>> \out.txt
         if [ "$?" -eq 0 ]; then
             Array[2]=0
             Array2[2]=PASS
