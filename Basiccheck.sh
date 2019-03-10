@@ -2,7 +2,7 @@
 function quit {
     echo "$(tput setaf 1)Test result: $(tput sgr 0)"
     result=$((4*Array[0]+2*Array[1]+Array[2]))
-    echo "Compilation       Memory leaks      thread race"
+    echo "Compilation       Memory leaks      Thread race"
     echo "   ${Array2[0]}              ${Array2[1]}             ${Array2[2]}"
 }
 
