@@ -10,7 +10,6 @@ cd $1
 Array=(1 1 1)
 Array2=(FAIL FAIL FAIL)
 
-if [ -e Makefile ]; then
     make &> \out.txt
     if [ "$?" -eq 0 ]; then
         if [ ! -e $2 ]; then
@@ -42,9 +41,3 @@ if [ -e Makefile ]; then
         quit
         exit $result
     fi
-   
-else
-    echo "Not found any Makefile in the specific folder"
-    quit
-    exit $result
-fi
