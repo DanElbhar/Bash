@@ -4,7 +4,6 @@ function quit {
     result=$((4*Array[0]+2*Array[1]+Array[2]))
     echo "Compilation       Memory leaks      Thread race"
     echo "   ${Array2[0]}              ${Array2[1]}             ${Array2[2]}"
-    cd - &>> \out.txt
 }
 
 cd $1
